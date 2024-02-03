@@ -1,4 +1,4 @@
-package com.example.onlinemarket.dto.responseDTO;
+package com.example.onlinemarket.dto.requestDTO;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,10 +8,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductResDTO {
+public class MeasurementReqDTO {
     String name;
-    CategoryResDTO categoryResDTO;
-    MeasurementResDTO measurementResDTO;
-    Integer amount;
 }
-

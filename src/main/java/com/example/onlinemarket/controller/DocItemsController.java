@@ -32,6 +32,7 @@ public class DocItemsController {
     }
     @DeleteMapping("/{id}")
     void deleteDocItems(@PathVariable Long id){
+
         docItemsService.deleteDocItemsById(id);
     }
 

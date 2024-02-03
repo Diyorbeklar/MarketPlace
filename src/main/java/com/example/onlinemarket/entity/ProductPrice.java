@@ -12,12 +12,13 @@ import java.util.Date;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Document {
+public class ProductPrice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @ManyToOne(cascade = CascadeType.ALL)
-    Company company;
+    Product product;
+    Double price;
     Date date;
-    Integer document_number;
+    Boolean status;
 }

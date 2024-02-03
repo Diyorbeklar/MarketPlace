@@ -1,7 +1,5 @@
 package com.example.onlinemarket.dto.requestDTO;
 
-import com.example.onlinemarket.Unit;
-import com.example.onlinemarket.entity.Category;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -11,9 +9,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductReqDTO {
-    Long category_id;
     String name;
-    Integer price;
-    Unit unit;
+    Long category_id;
+    Long measurement_id;
     Integer amount;
 }

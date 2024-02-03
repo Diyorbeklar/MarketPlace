@@ -23,10 +23,12 @@ public class DocItemsReqMapperImpl implements DocItemsReqMapper {
 
     @Override
     public DocItems toENTITY(DocItemsReqDTO docItemsReqDTO) {
+        System.out.println(docItemsReqDTO.toString());
+        System.out.println(documentRepostory.getReferenceById(2L));
         return DocItems.builder().count(docItemsReqDTO.getCount())
-                .current_price(docItemsReqDTO.getCurrent_price())
-                .document(documentRepostory.getReferenceById(docItemsReqDTO.getProduct_id()))
-                .product(productRepostory.getReferenceById(docItemsReqDTO.getDocument_id()))
+                .come_price(docItemsReqDTO.getCome_price())
+                .document(documentRepostory.getReferenceById(docItemsReqDTO.getDocument_id()))
+                .product(productRepostory.getReferenceById(docItemsReqDTO.getProduct_id()))
                 .build();
     }
 

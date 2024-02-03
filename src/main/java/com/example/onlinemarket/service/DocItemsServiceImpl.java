@@ -34,7 +34,7 @@ public class DocItemsServiceImpl implements DocItemsService{
 
     @Override
     public DocItemsResDTO createDocItems(DocItemsReqDTO docItemsReqDTO) {
-
+        System.out.println(docItemsReqMapper.toENTITY(docItemsReqDTO).toString());
         return docItemsResMapper.toDTO(docItemsRepostory.save(docItemsReqMapper.toENTITY(docItemsReqDTO)));
     }
 
@@ -42,7 +42,7 @@ public class DocItemsServiceImpl implements DocItemsService{
     public DocItemsResDTO updateDocItems(Long id, DocItemsReqDTO docItemsReqDTO) {
         DocItems docItems = docItemsRepostory.getReferenceById(id);
         docItems.setCount(docItemsReqDTO.getCount());
-        docItems.setCurrent_price(docItemsReqDTO.getCurrent_price());
+        docItems.setCome_price(docItemsReqDTO.getCome_price());
         docItems.setDocument(documentRepostory.getReferenceById(docItemsReqDTO.getDocument_id()));
         docItems.setProduct(productRepostory.getReferenceById(docItemsReqDTO.getProduct_id()));
         return docItemsResMapper.toDTO(docItemsRepostory.save(docItems));
@@ -50,6 +50,7 @@ public class DocItemsServiceImpl implements DocItemsService{
 
     @Override
     public void deleteDocItemsById(Long id) {
+        documentRepostory.deleteById(docItemsRepostory.getReferenceById(id).getDocument().getId());
         docItemsRepostory.deleteById(id);
     }
 }

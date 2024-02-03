@@ -8,10 +8,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductResDTO {
+public class MeasurementResDTO {
     String name;
-    CategoryResDTO categoryResDTO;
-    MeasurementResDTO measurementResDTO;
-    Integer amount;
 }
-

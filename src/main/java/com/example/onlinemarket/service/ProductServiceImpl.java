@@ -6,6 +6,7 @@ import com.example.onlinemarket.entity.Product;
 import com.example.onlinemarket.mapper.ProductReqMapper;
 import com.example.onlinemarket.mapper.ProductResMapper;
 import com.example.onlinemarket.repostory.CategoryRepostory;
+import com.example.onlinemarket.repostory.MeasurementRepostory;
 import com.example.onlinemarket.repostory.ProductRepostory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class ProductServiceImpl implements ProductService{
     private final ProductReqMapper productReqMapper;
     private final ProductResMapper productResMapper;
     private final CategoryRepostory categoryRepostory;
+    private final MeasurementRepostory measurementRepostory;
     @Override
     public List<ProductResDTO> getALLProduct() {
         return productResMapper.toDTOs(productRepostory.findAll());
@@ -39,8 +41,7 @@ public class ProductServiceImpl implements ProductService{
     public ProductResDTO updateProduct(Long id, ProductReqDTO productReqDTO) {
         Product product = productRepostory.getReferenceById(id);
         product.setName(productReqDTO.getName());
-        product.setUnit(productReqDTO.getUnit());
-        product.setPrice(productReqDTO.getPrice());
+        product.setMeasurement(measurementRepostory.getReferenceById(productReqDTO.getMeasurement_id()));
         product.setAmount(productReqDTO.getAmount());
         product.setCategory(categoryRepostory.getReferenceById(productReqDTO.getCategory_id()));
         return productResMapper.toDTO(productRepostory.save(product));

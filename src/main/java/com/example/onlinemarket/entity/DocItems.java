@@ -14,10 +14,10 @@ public class DocItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Document document;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Product product;
-    Integer current_price;
+    Integer come_price;
     Integer count;
 }

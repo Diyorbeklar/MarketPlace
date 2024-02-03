@@ -1,19 +1,19 @@
 package com.example.onlinemarket.dto.requestDTO;
 
-import com.example.onlinemarket.entity.Document;
 import com.example.onlinemarket.entity.Product;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Date;
 
 @Builder
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-public class DocItemsReqDTO {
-    Long document_id;
+public class ProductPriceReqDTO {
     Long product_id;
-    Integer come_price;
-    Integer count;
+    Double price;
+    Date date;
+    Boolean status;
 }

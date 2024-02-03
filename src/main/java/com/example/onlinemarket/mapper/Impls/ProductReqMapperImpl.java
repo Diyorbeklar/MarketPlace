@@ -4,6 +4,7 @@ import com.example.onlinemarket.dto.requestDTO.ProductReqDTO;
 import com.example.onlinemarket.entity.Product;
 import com.example.onlinemarket.mapper.ProductReqMapper;
 import com.example.onlinemarket.repostory.CategoryRepostory;
+import com.example.onlinemarket.repostory.MeasurementRepostory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProductReqMapperImpl implements ProductReqMapper {
     private final CategoryRepostory categoryRepostory;
+    private final MeasurementRepostory measurementRepostory;
     @Override
     public ProductReqDTO toDTO(Product product) {
         return null;
@@ -24,9 +26,8 @@ public class ProductReqMapperImpl implements ProductReqMapper {
         return Product.builder().category(
                 categoryRepostory.getReferenceById(productReqDTO.getCategory_id()))
                 .amount(productReqDTO.getAmount())
-                .unit(productReqDTO.getUnit())
+                .measurement(measurementRepostory.getReferenceById(productReqDTO.getMeasurement_id()))
                 .name(productReqDTO.getName())
-                .price(productReqDTO.getPrice())
                 .build();
     }
 

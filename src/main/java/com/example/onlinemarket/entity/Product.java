@@ -1,6 +1,5 @@
 package com.example.onlinemarket.entity;
 
-import com.example.onlinemarket.Unit;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -15,11 +14,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToOne
-    Category category;
     String name;
-    Integer price;
-    Unit unit;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Category category;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Measurement measurement;
     Integer amount;
 
 }

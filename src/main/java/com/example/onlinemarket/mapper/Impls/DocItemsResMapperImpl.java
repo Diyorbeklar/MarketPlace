@@ -21,7 +21,7 @@ public class DocItemsResMapperImpl implements DocItemsResMapper {
     public DocItemsResDTO toDTO(DocItems docItems) {
         return DocItemsResDTO.builder()
                 .count(docItems.getCount())
-                .current_price(docItems.getCurrent_price())
+                .come_price(docItems.getCome_price())
                 .documentResDTO(documentResMapper.toDTO(docItems.getDocument()))
                 .productResDTO(productResMapper.toDTO(docItems.getProduct()))
                 .build();
