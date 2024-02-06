@@ -1,10 +1,14 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/onlinemarket
     username: postgres
     password: Diyor2412
+  mvc: # JSP File Configuration
+    view:
+      prefix: /views/
+      suffix: .jsp

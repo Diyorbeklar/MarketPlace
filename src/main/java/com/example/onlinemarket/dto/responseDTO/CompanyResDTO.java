@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompanyResDTO {
+    Long id;
     String name;
     String address;
     String tell;

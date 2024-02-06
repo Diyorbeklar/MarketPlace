@@ -5,36 +5,43 @@ import com.example.onlinemarket.dto.responseDTO.CategoryResDTO;
 import com.example.onlinemarket.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/market/category")
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;
     @GetMapping
-    List<CategoryResDTO> getAllCategories(){
-        return categoryService.getALLCategory();
+    ModelAndView getAllCategories(){
+        ModelAndView mv = new ModelAndView("category");
+        mv.addObject("categoryList",categoryService.getALLCategory());
+        return mv;
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/88")
     CategoryResDTO getCategoryById(@PathVariable Long id){
         return categoryService.getCategoryById(id);
     }
-    @PostMapping()
-    CategoryResDTO createCategory(@RequestBody CategoryReqDTO categoryReqDTO){
-        return categoryService.createCategory(categoryReqDTO);
+    @PostMapping
+    ModelAndView createCategory(@RequestParam("name") String name){
+        categoryService.createCategory(new CategoryReqDTO(name));
+        return new ModelAndView("redirect:/market/category");
     }
 
-    @PutMapping("/{id}")
-    CategoryResDTO updateCategory(@PathVariable Long id,@RequestBody CategoryReqDTO categoryReqDTO){
-        return categoryService.updateCategory(id,categoryReqDTO);
+    @PostMapping("/{id}")
+    ModelAndView updateCategory(@PathVariable Long id,@RequestParam("name") String name){
+        System.out.println(name);
+        categoryService.updateCategory(id,new CategoryReqDTO(name));
+        return new ModelAndView("redirect:/market/category");
     }
 
-    @DeleteMapping("/{id}")
-    void deleteCategory(@PathVariable Long id){
+    @GetMapping("delete/{id}")
+    ModelAndView deleteCategory(@PathVariable Long id){
         categoryService.deleteCategoryById(id);
+        return new ModelAndView("redirect:/market/category");
     }
 
 }

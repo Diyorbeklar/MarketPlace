@@ -14,9 +14,9 @@ public class DocItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     Document document;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     Product product;
     Integer come_price;
     Integer count;

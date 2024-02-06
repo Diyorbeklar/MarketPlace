@@ -19,6 +19,7 @@ public class CompanyServiceImpl implements CompanyService{
     private final CompanyResMapper companyResMapper;
     @Override
     public List<CompanyResDTO> getALLCompany() {
+
         return companyResMapper.toDTOs(companyRepostory.findAll());
     }
 

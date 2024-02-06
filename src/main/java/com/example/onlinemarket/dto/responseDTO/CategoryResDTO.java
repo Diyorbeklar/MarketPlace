@@ -9,5 +9,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoryResDTO {
+    Long id;
     String name;
 }
